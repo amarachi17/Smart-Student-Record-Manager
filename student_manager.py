@@ -62,3 +62,43 @@ def search_student():
     
     print("❌ Student not found.")
 
+
+# Update Student
+
+def update_student(): 
+    students = load_students()
+
+    student_id = input("Enter Student ID to update: ").strip()
+
+    for student in students:
+        if student["id"] == student_id:
+            print("Leave blank to keep current value.")
+
+            name = input(f"Name ({student['name']}): ").strip()
+            age = input(f"Age ({student['age']}): ").strip()
+            score = input(f"Score ({student['score']}): ").strip()
+
+            if name:
+                student["name"] = name
+
+            if age:
+                try:
+                    student["age"] = int(age)
+                except ValueError:
+                    print("❌ Invalid age input.")
+                    return
+            
+            if score: 
+                try:
+                    student["score"] = float(score)
+                except ValueError:
+                    print("❌ Invalid score input.")
+                    return
+            
+            save_students(students)
+            print("✅ Student updated successfully.")
+            return
+    
+    print("❌ Student not found.")
+
+
