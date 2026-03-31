@@ -1,3 +1,4 @@
+import csv
 from storage import load_students, save_students
 
 # Add Student
@@ -117,3 +118,35 @@ def delete_student():
             print("Student deleted successfully.")
 
     print("❌ Student not found.")
+
+
+# Export Students to CSV
+
+def export_to_csv():
+    students = load_students()
+
+    if not students:
+        print("No students to export.")
+        return
+
+    file_name = "students_export.csv"
+
+    try:
+        with open(file_name, "w", newline="") as file:
+            writer = csv.writer(file)
+
+            # Write header
+            writer.writerow(["ID", "Name", "Age", "Score"])
+
+            # Write student data 
+            for student in students:
+                writer.writerow([
+                    student["id"],
+                    student["name"],
+                    student["age"],
+                    student["score"]
+                ]) 
+        print(f"Students exported successfully to {file_name}")
+
+    except Exception as e:
+        print(f"❌ Error exporting file: {e}")
