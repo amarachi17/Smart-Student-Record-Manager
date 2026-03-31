@@ -42,9 +42,10 @@ def view_students():
     if not students:
         print("No students found.")
         return
+    
     print("\n Student List:")
     for student in students:
-        print(f"{student['id']} | {student['name']} | Age: {student['age']} | Score: {student['score']}")
+        print(f"{student['id']} | {student['name']} | Age: {student['age']} | Score: {student['score']} ")
 
 
 # Search Student by ID 
@@ -102,3 +103,17 @@ def update_student():
     print("❌ Student not found.")
 
 
+# Delete Student
+
+def delete_student():
+    students = load_students()
+
+    student_id = input("Enter Student ID to delete: ").strip()
+
+    for student in students:
+        if student["id"] == student_id:
+            students.remove(student)
+            save_students(students)
+            print("Student deleted successfully.")
+
+    print("❌ Student not found.")
