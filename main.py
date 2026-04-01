@@ -6,6 +6,7 @@ from student_manager import(
     delete_student,
     export_to_csv
 )
+from ai_assistant import ai_search
 
 def display_menu():
     print("\n" + "-" * 40)
@@ -17,14 +18,15 @@ def display_menu():
     print("4. Update Student")
     print("5. Delete Student")
     print("6. Export Student to CSV")
-    print("7. Exit")
+    print("7. AI Search")
+    print("8. Exit")
     print("-" * 40)
 
 
 def main():
     while True: 
         display_menu()
-        choice = input("Enter your choice (1-7): ").strip()
+        choice = input("Enter your choice (1-8): ").strip()
 
         if choice == "1":
             add_student()
@@ -42,9 +44,12 @@ def main():
             delete_student()
 
         elif choice == "6":
-            export_to_csv(7)
+            export_to_csv()
 
         elif choice == "7":
+            ai_search()
+
+        elif choice == "8":
             print("Exiting program. Goodbye!")
             break
 
