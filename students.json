@@ -9,6 +9,12 @@
         "id": "3",
         "name": "Favour",
         "age": 30,
-        "score": 99.0
+        "score": 100.0
+    },
+    {
+        "id": "4",
+        "name": "Peter",
+        "age": 23,
+        "score": 47.0
     }
 ]
